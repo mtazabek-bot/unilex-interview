@@ -54,8 +54,8 @@ mark.mk{
 .kicker-bar{width:44px;height:3px;background:var(--green);margin:0 0 20px;transform-origin:left center}
 .title{margin:0 0 24px;font-size:36px;line-height:1.16;font-weight:700;letter-spacing:-.005em;color:var(--ink)}
 .hero{margin:0 0 30px}
-.hero-img{position:relative;overflow:hidden;border-radius:6px;background:#1a2f24;aspect-ratio:16/9}
-.hero-img img{position:relative;display:block;width:100%;height:100%;object-fit:cover}
+.hero-img{position:relative;overflow:hidden;border-radius:6px;background:#1a2f24;aspect-ratio:var(--ar,16/9)}   /* --ar, --arh, --pos — из параметров фото */
+.hero-img img{position:relative;display:block;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%)}
 .hero-lq{position:absolute;inset:-12px;background-size:cover;background-position:center;filter:blur(12px)}   /* превью, пока грузится 5K */
 .hero-img::after{
   content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
@@ -285,10 +285,9 @@ a.cta-row:hover .cta-t{text-decoration:underline;text-decoration-color:rgba(255,
   .solo .top{display:flex;flex-direction:column;padding-top:0}
   .solo .top .hero{order:-1;position:relative;width:100vw;margin:0 calc(50% - 50vw) 52px}
   .solo .top .kicker-bar{align-self:flex-start}
-  .solo .hero-img{border-radius:0;aspect-ratio:auto;height:min(100vh,56.25vw);height:min(100svh,56.25vw)}   /* без обрезки по бокам */
-  .solo .hero-img img{object-position:50% 58%}
+  .solo .hero-img{border-radius:0;aspect-ratio:auto;height:min(100vh,calc(100vw * var(--arh,.5625)));height:min(100svh,calc(100vw * var(--arh,.5625)))}   /* без обрезки по бокам */
   .solo .hero-cue{display:block;position:absolute;left:50%;bottom:26px;width:26px;height:26px;margin-left:-13px;
-    color:rgba(255,255,255,.7);pointer-events:none;animation:cue 2.4s 3s ease-in-out infinite both}
+    color:rgba(255,255,255,.85);filter:drop-shadow(0 1px 3px rgba(0,0,0,.55));pointer-events:none;animation:cue 2.4s 3s ease-in-out infinite both}
   .solo .hero-cue svg{width:26px;height:26px}
   @keyframes cue{0%,100%{opacity:0;transform:translateY(-6px)}40%,60%{opacity:1;transform:none}}
 }
@@ -303,7 +302,7 @@ a.cta-row:hover .cta-t{text-decoration:underline;text-decoration-color:rgba(255,
 <header class="top">
   <div class="kicker-bar rv" aria-hidden="true"></div>
   <h1 class="title rv">Когда бизнесу выгоднее передать бухгалтерию на аутсорс? Ответ UniLex Company</h1>
-  <figure class="hero rv"><div class="hero-img"><div class="hero-lq" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAWACgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDy+FVxk9q6k+F2ivbe1NyhM6swbacDArk4j8h+YdDXp8MK32qabcRTKY0hlDOOVDYXAJ7Zz+lQzDW5g/8ACLn+0fsX2lN3leZu2nHXGKjTwq9xfXFolwm6BVYttODmut/s4nWxdJMroYFj3D7vzMSDnt0H51F5I0zUtQvLi4hEMyrGh3YyVU56/X/OKV2Gp5fdReWxVhhh1HpRS38iyzySI3DHIz1oqxo0rfTxJgNI2K17HSfKyVvJ8E527uPyooqWNJM0xaMEx9plx9azr7SjK25ryc+o3cH60UUh8qRkXGnKmQJGxRRRVEn/2Q==)"></div><img src="https://mtazabek-bot.github.io/unilex-interview/hero_h025g_5k.jpg" width="5120" height="2880" alt="UniLex — аутсорсинг бухгалтерских услуг" decoding="async" fetchpriority="high"></div><span class="hero-cue" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></figure>
+  <figure class="hero rv"><div class="hero-img" style="--ar:5592/3584;--arh:0.6409;--pos:50% 38%"><div class="hero-lq" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAaACgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDch1SxuJz50JY52spAcZ96uXGmR29ozWxkRi3MWdyMPoa8/wBRN3ol9/Z9rv1OOGJpSGiKsOWyWx1+Zgc+1a2q6zeeHklsr0PPLO6P5sbsC/GW69P4Rx6V1c7vytamTgrXTNO50+CAJPemGGLPHmuqgn0G7vV5dLiNsskNk7q6hlKuoBB78ViazpE/imw06EyFbprOKQedv2NIVOU9AxHO41qXeoXnh/T4LO6m2+VZP5YXapwAwTPuMDn296z9pG5XI7BqdtmS2t3shEqhn3bwfQYxiis3QL+68R3K2yM74IHmoiskSkgkkswYEbW6AnDc0VafLpJA12Z5Xe3d0l28xuJt+3h/MO7BHPNd146hN7Y2LWwcrtBIdySPl4wT17/lXn999/8A7ZCvSbvm20wHkbov5UvtsX2SS3jm0/wvHrH2m5uEgtctD9oKhyB+np9K5vU/EP8AwkMc95JHJaR+SI1jaZpFO0cHJHvXVWJLeB9rHK7SMHpjaa4i3A/4R3p009j/AORDSUIuVinJ6GfprSHXrRYpXiIccoxBA6np7cUUmkkjXVIODtbp/u0VvGWr9TOSP//Z)"></div><img src="https://mtazabek-bot.github.io/unilex-interview/hero_team_117A995.jpg" width="5592" height="3584" alt="Команда UniLex Company" decoding="async" fetchpriority="high"></div><span class="hero-cue" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></figure>
   <p class="lede rv">В UniLex Company рассказали, в каких случаях бизнесу выгоднее передать бухгалтерию на аутсорсинг.</p>
 </header>
 <article>
