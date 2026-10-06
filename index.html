@@ -277,7 +277,23 @@ a.cta-row:hover .cta-t{text-decoration:underline;text-decoration-color:rgba(255,
   .addr-c p{font-size:18px}
   .links{font-size:18px}
 }
+/* ---------- прямая ссылка на десктопе: главное фото — первым экраном во всю ширину ---------- */
+.hero-cue{display:none}
+@media (min-width:900px){
+  .solo body{overflow-x:hidden;overflow-x:clip}          /* 100vw шире окна на ширину полосы прокрутки */
+  .solo #root{padding-top:0}
+  .solo .top{display:flex;flex-direction:column;padding-top:0}
+  .solo .top .hero{order:-1;position:relative;width:100vw;margin:0 calc(50% - 50vw) 52px}
+  .solo .top .kicker-bar{align-self:flex-start}
+  .solo .hero-img{border-radius:0;aspect-ratio:auto;height:min(100vh,56.25vw);height:min(100svh,56.25vw)}   /* без обрезки по бокам */
+  .solo .hero-img img{object-position:50% 58%}
+  .solo .hero-cue{display:block;position:absolute;left:50%;bottom:26px;width:26px;height:26px;margin-left:-13px;
+    color:rgba(255,255,255,.7);pointer-events:none;animation:cue 2.4s 3s ease-in-out infinite both}
+  .solo .hero-cue svg{width:26px;height:26px}
+  @keyframes cue{0%,100%{opacity:0;transform:translateY(-6px)}40%,60%{opacity:1;transform:none}}
+}
 @media (prefers-reduced-motion:reduce){
+  .solo .hero-cue{animation:none;opacity:.7}
   .anim .rv,.anim .q-rule,.anim mark.mk,.anim .hero img,.cta-glow{transition:none;animation:none}
 }
 </style>
@@ -287,7 +303,7 @@ a.cta-row:hover .cta-t{text-decoration:underline;text-decoration-color:rgba(255,
 <header class="top">
   <div class="kicker-bar rv" aria-hidden="true"></div>
   <h1 class="title rv">Когда бизнесу выгоднее передать бухгалтерию на аутсорс? Ответ UniLex Company</h1>
-  <figure class="hero rv"><div class="hero-img"><div class="hero-lq" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAWACgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDy+FVxk9q6k+F2ivbe1NyhM6swbacDArk4j8h+YdDXp8MK32qabcRTKY0hlDOOVDYXAJ7Zz+lQzDW5g/8ACLn+0fsX2lN3leZu2nHXGKjTwq9xfXFolwm6BVYttODmut/s4nWxdJMroYFj3D7vzMSDnt0H51F5I0zUtQvLi4hEMyrGh3YyVU56/X/OKV2Gp5fdReWxVhhh1HpRS38iyzySI3DHIz1oqxo0rfTxJgNI2K17HSfKyVvJ8E527uPyooqWNJM0xaMEx9plx9azr7SjK25ryc+o3cH60UUh8qRkXGnKmQJGxRRRVEn/2Q==)"></div><img src="https://mtazabek-bot.github.io/unilex-interview/hero_h025g_5k.jpg" width="5120" height="2880" alt="UniLex — аутсорсинг бухгалтерских услуг" decoding="async" fetchpriority="high"></div></figure>
+  <figure class="hero rv"><div class="hero-img"><div class="hero-lq" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAWACgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDy+FVxk9q6k+F2ivbe1NyhM6swbacDArk4j8h+YdDXp8MK32qabcRTKY0hlDOOVDYXAJ7Zz+lQzDW5g/8ACLn+0fsX2lN3leZu2nHXGKjTwq9xfXFolwm6BVYttODmut/s4nWxdJMroYFj3D7vzMSDnt0H51F5I0zUtQvLi4hEMyrGh3YyVU56/X/OKV2Gp5fdReWxVhhh1HpRS38iyzySI3DHIz1oqxo0rfTxJgNI2K17HSfKyVvJ8E527uPyooqWNJM0xaMEx9plx9azr7SjK25ryc+o3cH60UUh8qRkXGnKmQJGxRRRVEn/2Q==)"></div><img src="https://mtazabek-bot.github.io/unilex-interview/hero_h025g_5k.jpg" width="5120" height="2880" alt="UniLex — аутсорсинг бухгалтерских услуг" decoding="async" fetchpriority="high"></div><span class="hero-cue" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></figure>
   <p class="lede rv">В UniLex Company рассказали, в каких случаях бизнесу выгоднее передать бухгалтерию на аутсорсинг.</p>
 </header>
 <article>
